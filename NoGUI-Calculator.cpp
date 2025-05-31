@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <limits>
+#include <sstream>
 using namespace std;
 
 class Calculator
@@ -31,7 +32,7 @@ public:
         if (b == 0)
         {
             cout << "Error! Division by zero." << endl;
-            return numeric_limits<double>::quiet_NaN(); // Not a Number
+            return numeric_limits<double>::quiet_NaN();
         }
         return a / b;
     }
@@ -45,7 +46,15 @@ public:
 void clearInput()
 {
     cin.clear();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // تجاهل باقي السطر
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
+
+bool isInteger(const string &input)
+{
+    istringstream iss(input);
+    int num;
+    char extra;
+    return (iss >> num) && !(iss >> extra);
 }
 
 int main()
@@ -63,15 +72,16 @@ int main()
         cout << "6. Exit" << endl;
 
         cout << "\nEnter your choice: ";
-        int choice;
-        cin >> choice;
+        string choiceInput;
+        getline(cin, choiceInput);
 
-        if (cin.fail())
+        if (!isInteger(choiceInput))
         {
             cout << "Invalid input! Please enter a number between 1 and 6." << endl;
-            clearInput();
             continue;
         }
+
+        int choice = stoi(choiceInput);
 
         if (choice == 6)
         {
@@ -103,9 +113,9 @@ int main()
             clearInput();
             continue;
         }
+        clearInput(); // لتنظيف إدخال المستخدم بعد الأرقام
 
         double result;
-        string operation;
 
         switch (choice)
         {
@@ -122,15 +132,8 @@ int main()
             cout << "\nResult: " << num1 << " * " << num2 << " = " << result << endl;
             break;
         case 4:
-            if (num2 == 0)
-            {
-                cout << "Error! Division by zero." << endl;
-            }
-            else
-            {
-                result = calc.divide(num1, num2);
-                cout << "\nResult: " << num1 << " / " << num2 << " = " << result << endl;
-            }
+            result = calc.divide(num1, num2);
+            cout << "\nResult: " << num1 << " / " << num2 << " = " << result << endl;
             break;
         case 5:
             result = calc.exponentiate(num1, num2);
