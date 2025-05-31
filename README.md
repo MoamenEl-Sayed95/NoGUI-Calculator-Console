@@ -1,4 +1,4 @@
-# 🧮 NoGUI-Calculator
+# 🧮 NoGUI-Calculator-Console
 
 A command-line calculator built using **Object-Oriented Programming (OOP)** in C++.  
 This project demonstrates clean and extendable code without using any graphical interface.
