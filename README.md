@@ -32,8 +32,8 @@ Simple Calculator (OOP-Based)
 6. Exit
 
 Enter your choice: 1
-Enter first number: 2 
-Enter second number: 3 
+Enter a first number: 2 
+Enter a second number: 3 
 Result: 2.0 + 3.0 = 5.0
 
 ## 🗂️ Project Structure
