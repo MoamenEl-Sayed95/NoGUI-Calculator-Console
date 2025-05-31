@@ -34,7 +34,7 @@ Simple Calculator (OOP-Based)
 Enter your choice: 1
 Enter first number: 2 
 Enter second number: 3 
-Result of 2.0 + 3.0 = 5.0
+Result: 2.0 + 3.0 = 5.0
 
 ## 🗂️ Project Structure
 
